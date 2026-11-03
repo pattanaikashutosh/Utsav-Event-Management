@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Utsav – Discover and register for events</title>
+  <meta name="description" content="Browse upcoming events, search by name, filter by category and register in seconds.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#events">Skip to events</a>
+
+  <header class="top">
+    <a class="brand" href="#" aria-label="Utsav home">Utsav</a>
+    <nav class="top-actions" aria-label="Main">
+      <a href="#events">Events</a>
+      <button class="btn ghost" id="myRegsBtn" type="button">My registrations <span class="count" id="regCount">0</span></button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark mode">
+        <span aria-hidden="true" id="themeIcon">🌙</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Events worth showing up for.</h1>
+        <p>Concerts, hack nights, workshops and matches happening soon. Pick one, register in under a minute, and get your reference number instantly.</p>
+        <a class="btn primary" href="#events">Browse events</a>
+      </div>
+
+      <aside class="next" aria-live="off">
+        <p class="next-label">Next event starts in</p>
+        <div class="clock" id="clock" role="timer">
+          <div><b id="cd-d">00</b><span>days</span></div>
+          <div><b id="cd-h">00</b><span>hours</span></div>
+          <div><b id="cd-m">00</b><span>mins</span></div>
+          <div><b id="cd-s">00</b><span>secs</span></div>
+        </div>
+        <p class="next-title" id="nextTitle"></p>
+        <button class="btn light" id="nextBtn" type="button">View details</button>
+      </aside>
+    </section>
+
+    <section class="events" id="events">
+      <div class="section-head">
+        <h2>Upcoming events</h2>
+        <p id="resultCount" aria-live="polite"></p>
+      </div>
+
+      <div class="toolbar">
+        <label class="search">
+          <span class="sr">Search events</span>
+          <input id="search" type="search" placeholder="Search by name, venue or keyword" autocomplete="off">
+        </label>
+        <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+      </div>
+
+      <div class="grid" id="grid"></div>
+      <div class="empty" id="empty" hidden>
+        <h3>No events match your search</h3>
+        <p>Try a different keyword or clear the category filter.</p>
+        <button class="btn ghost" id="clearBtn" type="button">Clear filters</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Utsav · Built with HTML, CSS and JavaScript · Registrations are stored in your browser only.</p>
+  </footer>
+
+  <!-- Event details + registration -->
+  <dialog id="eventDialog" aria-labelledby="dTitle">
+    <button class="close" type="button" data-close aria-label="Close">×</button>
+    <img class="d-img" id="dImg" alt="">
+    <div class="d-body">
+      <p class="tag" id="dCat"></p>
+      <h2 id="dTitle"></h2>
+      <ul class="facts" id="dFacts"></ul>
+      <p id="dDesc"></p>
+
+      <form id="regForm" novalidate>
+        <h3>Register for this event</h3>
+        <div class="field">
+          <label for="fName">Full name</label>
+          <input id="fName" name="name" type="text" autocomplete="name" required>
+          <small class="err" id="eName"></small>
+        </div>
+        <div class="field">
+          <label for="fEmail">Email address</label>
+          <input id="fEmail" name="email" type="email" autocomplete="email" required>
+          <small class="err" id="eEmail"></small>
+        </div>
+        <div class="field">
+          <label for="fPhone">Phone number</label>
+          <input id="fPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="10-digit mobile number" required>
+          <small class="err" id="ePhone"></small>
+        </div>
+        <div class="field">
+          <label for="fEvent">Selected event</label>
+          <select id="fEvent" name="event" required></select>
+          <small class="err" id="eEvent"></small>
+        </div>
+        <button class="btn primary" type="submit">Confirm registration</button>
+      </form>
+
+      <div class="success" id="success" hidden tabindex="-1">
+        <div class="tick" aria-hidden="true">✓</div>
+        <h3>You're registered!</h3>
+        <p id="successMsg"></p>
+        <p class="ref">Reference: <b id="refId"></b></p>
+        <button class="btn ghost" type="button" data-close>Done</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- My registrations -->
+  <dialog id="regsDialog" aria-labelledby="rTitle">
+    <button class="close" type="button" data-close aria-label="Close">×</button>
+    <div class="d-body">
+      <h2 id="rTitle">My registrations</h2>
+      <ul class="reg-list" id="regList"></ul>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
