@@ -2,8 +2,8 @@
 
 Utsav is a responsive event management website that I designed and built from scratch for the **K Explore – Web Designing** task. It helps people discover upcoming events, find the ones they care about, and register in under a minute.
 
-**Live website:** https://YOUR-USERNAME.github.io/utsav-events/
-**GitHub repository:** https://github.com/YOUR-USERNAME/utsav-events
+**Live website:** https://pattanaikashutosh.github.io/Utsav-Event-Management
+**GitHub repository:** https://github.com/pattanaikashutosh/Utsav-Event-Management
 **Built by:** YOUR NAME
 
 ---
